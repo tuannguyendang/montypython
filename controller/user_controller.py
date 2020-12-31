@@ -1,11 +1,12 @@
 import sys
+
 from flask import Flask, jsonify, request, url_for
-from user import db, User
 from slugify import slugify
 
+from entity import User, db
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///user.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///../resources/user.db"
 db.init_app(app)
 
 
@@ -34,7 +35,7 @@ def create_user():
     slug = slugify(name)
     print(slug)
 
-    user = User(name=name,image_url=image_url,address=address)
+    user = User(name=name, image_url=image_url, address=address)
     db.session.add(user)
     db.session.commit()
 
@@ -55,14 +56,13 @@ if __name__ == "__main__":
     elif "seeddb" in sys.argv:
         with app.app_context():
             p1 = User(address="205 nguyen duy trinh", name="hoang",
-                       image_url="http://example.com/rover.jpg")
+                      image_url="http://example.com/rover.jpg")
             db.session.add(p1)
             p2 = User(address="truong quang trach", name="tuan",
-                       image_url="http://example.com/spot.jpg")
+                      image_url="http://example.com/spot.jpg")
             db.session.add(p2)
             db.session.commit()
         print("Database seeded!")
 
     else:
         app.run(debug=True)
-

@@ -1,15 +1,14 @@
 from flask import Flask, jsonify, url_for
-from markupsafe import escape
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
 
 @app.route('/v1/api')
 class ApiController(object):
     USERS = [{
-            'name': 'tuan nguyen',
-            'address': 'nguyen duy trinh'
-        },
+        'name': 'tuan nguyen',
+        'address': 'nguyen duy trinh'
+    },
         {
             'name': 'nguyen hoang',
             'address': 'usa'
@@ -20,7 +19,6 @@ class ApiController(object):
     @app.route('/get_user/<int:index>')
     def get_user(self, index):
         return jsonify(self.USERS[index])
-
 
     with app.test_request_context():
         print(url_for('user'))
