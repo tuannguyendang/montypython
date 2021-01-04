@@ -10,6 +10,18 @@ print(stocks.setdefault("GOOG", "INVALID"))
 print(stocks.setdefault("BBRY", (10.87, 10.76, 10.90)))
 print(stocks["BBRY"])
 
+
+for stock in stocks.keys():
+    print('key: ', stock),
+
+
+for values in stocks.values():
+    print('value: ', values)
+
+for key, values in stocks.items():
+    print(f'{key} = {values}')
+
+
 random_keys = {}
 random_keys["astring"] = "somestring"
 random_keys[5] = "aninteger"
