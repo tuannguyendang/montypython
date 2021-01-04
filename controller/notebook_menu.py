@@ -3,7 +3,7 @@ import sys
 from model import NoteBook
 
 
-class Menu:
+class NoteBookMenu:
     def __init__(self):
         self.notebook = NoteBook()
         self.choices = {
@@ -69,4 +69,4 @@ class Menu:
 
 
 if __name__ == '__main__':
-    Menu().run()
+    NoteBookMenu().run()
