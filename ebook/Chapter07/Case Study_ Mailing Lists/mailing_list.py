@@ -75,3 +75,12 @@ class MailingList:
 
     def __exit__(self, type, value, tb):
         self.save()
+
+# run server smtp in terminal: python -m smtpd -n -c DebuggingServer localhost:1025
+
+send_email("A model subject", "The message contents",
+    "from@example.com", "to1@example.com", "to2@example.com")
+
+with MailingList('addresses.db') as ml:
+   ml.add_to_group('friend2@example.com', 'friends')
+   ml.send_mailing("What's up", "hey friends, how's it going", 'me@example.com', 'friends')
