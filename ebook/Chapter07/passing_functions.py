@@ -25,3 +25,47 @@ def another_function(function):
 
 another_function(my_function)
 another_function(second_function)
+
+
+class A:
+    def print(self):
+        print("my class is A")
+
+
+def fake_print(self):
+    print("my class is not A")
+
+
+a = A()
+a.print()
+# a.print = fake_print
+# a.print()
+
+
+print('--------')
+A.print = fake_print
+a.print()
+a1 = A()
+a1.print()
+
+
+class testMOD(object):
+    def testFunc(self, variable):
+        var = variable
+        self.something = var + 12
+        print('Original:', self.something)
+
+
+def alternativeFunc2(self, variable):
+    var = variable
+    self.something = var + 1.2
+    print('Alternative2:', self.something)
+
+
+mytest2 = testMOD()
+mytest2.testFunc(10)  # Original: 22
+
+testMOD.testFunc = alternativeFunc2
+mytest2.testFunc(10)  # Alternative2: 11.2
+mytestX = testMOD()
+mytestX.testFunc(10)  # Alternative2: 11.2
