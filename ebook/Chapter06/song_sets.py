@@ -1,3 +1,5 @@
+from queue import Queue
+
 song_library = [
     ("Phantom Of The Opera", "Sarah Brightman"),
     ("Knocking On Heaven's Door", "Guns N' Roses"),
@@ -13,6 +15,10 @@ for song, artist in song_library:
     artists.add(artist)
 
 print(artists)
+
+alphabetical = list(artists)
+alphabetical.sort()
+print(alphabetical)
 
 first_artists = {
     "Sarah Brightman",
@@ -30,6 +36,7 @@ print(
         first_artists.symmetric_difference(second_artists)
     )
 )
+print("Either but not both 2: {}".format(second_artists.symmetric_difference(first_artists)))
 
 bands = {"Guns N' Roses", "Opeth"}
 
@@ -42,3 +49,29 @@ print("bands is to first_artists:")
 print("issuperset: {}".format(bands.issuperset(first_artists)))
 print("issubset: {}".format(bands.issubset(first_artists)))
 print("difference: {}".format(bands.difference(first_artists)))
+
+def calculationRandom(n):
+    queue = Queue()
+    queuek = Queue()
+    mydata = set()
+    mydatak = set()
+    for i in range(0,n):
+        queue.put(i)
+    while not queue.empty():
+        num = queue.get()
+        mydata.add(num)
+
+    for i in range(5, n):
+        queuek.put(i)
+    while not queuek.empty():
+        num = queuek.get()
+        mydatak.add(num)
+
+    print(mydata)
+    print(mydatak)
+    print(mydatak.issubset(mydata))
+    print(mydatak.issuperset(mydata))
+    print(mydata.difference(mydatak))
+    print(mydatak.symmetric_difference(mydata))
+
+calculationRandom(10)
