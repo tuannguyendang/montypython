@@ -13,14 +13,14 @@ class CarModel:
         return model
 
     def __init__(
-        self,
-        model_name,
-        air=False,
-        tilt=False,
-        cruise_control=False,
-        power_locks=False,
-        alloy_wheels=False,
-        usb_charger=False,
+            self,
+            model_name,
+            air=False,
+            tilt=False,
+            cruise_control=False,
+            power_locks=False,
+            alloy_wheels=False,
+            usb_charger=False,
     ):
         if not hasattr(self, "initted"):
             self.model_name = model_name
@@ -48,3 +48,33 @@ class Car:
 
     def check_serial(self):
         return self.model.check_serial(self.serial)
+
+
+dx = CarModel("FIT DX")
+lx = CarModel("FIT LX", air=True, cruise_control=True, power_locks=True, tilt=True)
+car1 = Car(dx, "blue", "12345")
+car2 = Car(dx, "black", "12346")
+car3 = Car(lx, "red", "12347")
+
+print(f"lx : ", id(lx))
+print(f"dx : ", id(dx))
+
+print(f"car1 :", car1)
+print(f"car 2:", car2)
+print(f"car 3:", car3)
+print(f"car 1 model : ", car1.model)
+print(f"car 2 model :", car2.model)
+
+del lx
+del car3
+
+import gc
+
+gc.collect()
+
+lx = CarModel("FIT LX", air=True, cruise_control=True, power_locks=True, tilt=True)
+
+print(f"lx :", id(lx))
+lx = CarModel("FIT LX")
+print(f"lx id :", id(lx))
+print(lx.air)

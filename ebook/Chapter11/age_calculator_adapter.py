@@ -31,3 +31,14 @@ class DateAgeAdapter:
 class AgeableDate(datetime.date):
     def split(self, char):
         return self.year, self.month, self.day
+
+dateAdapter = DateAgeAdapter(datetime.datetime(1975, 5, 17))
+print(dateAdapter.get_age(datetime.date.today()))
+
+bd = AgeableDate(1975, 6, 14)
+today = AgeableDate.today()
+print(today)
+
+AgeableDate(2015, 8, 4)
+a = AgeCalculator(bd)
+print(a.calculate_age(today))

@@ -68,3 +68,13 @@ class FranceFormatterFactory:
 country_code = "US"
 factory_map = {"US": USAFormatterFactory, "FR": FranceFormatterFactory}
 formatter_factory = factory_map.get(country_code)()
+print(formatter_factory)
+
+print(formatter_factory.create_date_formatter().format_date(2021, 1, 1))
+print(formatter_factory.create_currency_formatter().format_currency(14500, 50))
+
+country_code = "FR"
+formatter_factory = factory_map.get(country_code)()
+print(formatter_factory)
+print(formatter_factory.create_date_formatter().format_date(2021, 1, 1))
+print(formatter_factory.create_currency_formatter().format_currency(14500, 50))

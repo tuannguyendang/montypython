@@ -1,5 +1,5 @@
-import smtplib
 import imaplib
+import smtplib
 
 
 class EmailFacade:
@@ -17,15 +17,15 @@ class EmailFacade:
             "From: {0}\r\n" "To: {1}\r\n" "Subject: {2}\r\n\r\n{3}"
         ).format(from_email, to_email, subject, message)
 
-        smtp = smtplib.SMTP(self.host)
-        smtp.login(self.username, self.password)
+        smtp = smtplib.SMTP(self.host, 1025)
+        # smtp.login(self.username, self.password)
         smtp.sendmail(from_email, [to_email], message)
 
     def get_inbox(self):
-        mailbox = imaplib.IMAP4(self.host)
-        mailbox.login(
-            bytes(self.username, "utf8"), bytes(self.password, "utf8")
-        )
+        mailbox = imaplib.IMAP4(self.host, 1025)
+        # mailbox.login(
+        #     bytes(self.username, "utf8"), bytes(self.password, "utf8")
+        # )
         mailbox.select()
         x, data = mailbox.search(None, "ALL")
         messages = []
@@ -33,3 +33,11 @@ class EmailFacade:
             x, message = mailbox.fetch(num, "(RFC822)")
             messages.append(message[0][1])
         return messages
+
+
+# run server smtp in terminal: python -m smtpd -n -c DebuggingServer localhost:1025
+
+
+emailFacade = EmailFacade("localhost", "tuan", "1234567")
+emailFacade.send_email("to1@example.com", "A model subject", "The message contents")
+emailFacade.get_inbox()
