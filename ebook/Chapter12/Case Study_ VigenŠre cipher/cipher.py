@@ -6,7 +6,6 @@ class Cipher:
         self.keyword = keyword
 
     def encode(self, data):
-        data = re.sub(' +', '', data)
         return self.__code(data, combine_character)
 
     def extend_keyword(self, length):
@@ -17,11 +16,19 @@ class Cipher:
         return self.__code(encrypt, separate_character)
 
     def __code(self, data, func):
+        self.validate(data, self.keyword)
+        data = re.sub(' +', '', data)
         cipher = []
         key = self.extend_keyword(len(data))
         for p, k in zip(data, key):
             cipher.append(func(p, k))
         return "".join(cipher)
+
+    def validate(self, data, key):
+        if data is None or data == '':
+            raise ValueError('Data invalid!')
+        if key is None or key == '':
+            raise ValueError('Key invalid!')
 
 
 def combine_character(plain, keyword):

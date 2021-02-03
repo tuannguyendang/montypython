@@ -1,3 +1,5 @@
+import pytest
+
 from cipher import Cipher, combine_character, separate_character
 
 
@@ -65,6 +67,27 @@ def test_extend_keyword_lower():
     cipher = Cipher("trAin  ")
     extend_keyword = cipher.extend_keyword(20)
     assert extend_keyword == "TRAINTRAINTRAINTRAINTRAIN"
+
+
+def test_plain_text_invalid():
+    cipher = Cipher("TRAIN")
+    with pytest.raises(ValueError) as ex:
+        cipher.encode(None)
+    assert ex.value.args[0] == "Data invalid!"
+
+
+def test_key_invalid():
+    cipher = Cipher(None)
+    with pytest.raises(ValueError) as ex:
+        cipher.encode("ENCODED")
+    assert ex.value.args[0] == "Key invalid!"
+
+
+def test_key_and_plain_text_invalid():
+    cipher = Cipher(None)
+    with pytest.raises(ValueError) as ex:
+        cipher.encode("  ")
+    assert ex.value.args[0] == "Key invalid!"
 
 
 def test_separate_character():
