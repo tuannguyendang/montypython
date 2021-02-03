@@ -20,3 +20,4 @@ def test_osfiles(temp_dir):
     assert "a" in dir_contents
     assert "b" in dir_contents
 
+# pytest test_pytest_cleanup.py -s

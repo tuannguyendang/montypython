@@ -30,3 +30,4 @@ def test_echo2(echoserver, clientsocket):
     clientsocket.send(b"def")
     assert clientsocket.recv(3) == b"def"
 
+# pytest test_echo_server.py -s

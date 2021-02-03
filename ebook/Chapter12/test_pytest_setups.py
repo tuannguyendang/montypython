@@ -38,3 +38,27 @@ class TestClass2(BaseTest):
 
     def test_method_2(self):
         print("RUNNING METHOD 2-2")
+
+# pytest test_pytest_setups.py -s
+
+# test_pytest_setups.py setting up MODULE test_pytest_setups
+# RUNNING TEST FUNCTION
+# .setting up CLASS TestClass1
+# setting up METHOD test_method_1
+# RUNNING METHOD 1-1
+# .tearing down  METHOD test_method_1
+# setting up METHOD test_method_2
+# RUNNING METHOD 1-2
+# .tearing down  METHOD test_method_2
+# tearing down CLASS TestClass1
+#
+# setting up CLASS TestClass2
+# setting up METHOD test_method_1
+# RUNNING METHOD 2-1
+# .tearing down  METHOD test_method_1
+# setting up METHOD test_method_2
+# RUNNING METHOD 2-2
+# .tearing down  METHOD test_method_2
+# tearing down CLASS TestClass2
+#
+# tearing down MODULE test_pytest_setups

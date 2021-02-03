@@ -1,7 +1,9 @@
-from flight_status_redis import FlightStatusTracker
-from unittest.mock import Mock, patch
 import datetime
+from unittest.mock import Mock, patch
+
 import pytest
+
+from flight_status_redis import FlightStatusTracker
 
 
 @pytest.fixture
@@ -28,3 +30,4 @@ def test_patch(tracker):
         "flightno:AC102", "2015-04-01T00:00:00|ON TIME"
     )
 
+# pytest test_flight_status.py -s

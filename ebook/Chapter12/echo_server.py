@@ -10,3 +10,6 @@ while True:
     data = client.recv(1024)
     client.send(data)
     client.close()
+
+#echo_server
+#test_echo_server

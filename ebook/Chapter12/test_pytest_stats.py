@@ -21,3 +21,5 @@ def test_mode(valid_stats):
     assert valid_stats.mode() == [2, 3]
     valid_stats.remove(2)
     assert valid_stats.mode() == [3]
+
+# pytest test_pytest_stats.py

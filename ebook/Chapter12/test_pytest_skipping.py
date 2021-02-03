@@ -13,3 +13,6 @@ def test_simple_skip():
 @pytest.mark.skipif("sys.version_info <= (3,0)")
 def test_python3():
     assert b"hello".decode() == "hello"
+
+
+ # pytest test_pytest_skipping.py
