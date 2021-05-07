@@ -8,3 +8,4 @@ from .authenticator import Authenticator
 from .character import Character
 from .cursor import Cursor
 from .document import Document
+from .user_schema import user_schema, ma, users_schema

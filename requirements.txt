@@ -1,3 +1,7 @@
 Flask
 Flask-SQLAlchemy
+Flask-Marshmallow
 python-slugify
+flask-restx
+Flask-Login
+Marshmallow-SQLAlchemy
