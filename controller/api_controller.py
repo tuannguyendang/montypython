@@ -21,4 +21,5 @@ class ApiController(object):
         return jsonify(self.USERS[index])
 
     with app.test_request_context():
-        print(url_for('user'))
+        print(url_for('get_user', index=1))
+        app.run(debug=True)
